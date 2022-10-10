@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static "css/dashboard.css"%}">
+    <link rel="icon" href="{% static "icons/title_icon.png"%}">
+</head>
+
+<body>
+    <section class="section">
+        <h1>Welcome</h1>
+        <div class="container">
+            <h2>Your insight of the day<h2>
+            <p>You can only find out what you actually believe (rather than what you think you believe) by watching how you act. You simply don’t know what you believe, before that. You are too complex to understand yourself.</p>
+            <a href="/signout"><button type="submit" class="button">Sign Out</button></a>
+        </div>
+    </section>
+    <div>
+        {% if messages %}
+        <div class="messages" style="text-align:center;margin-top:5px;">
+            {% for message in messages %}
+            <p class="{{ message.tags }}">{{ message }}</p>
+            <br>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

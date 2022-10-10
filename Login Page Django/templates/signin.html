@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign In</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/signin.css"%}">
+    <link rel="icon" href="{% static "icons/title_icon.png"%}">
+</head>
+
+<body>
+
+
+    <section class="section">
+        <h1>Sign In</h1>
+        <div class="container">
+            <form action="/signin" method="post" class="formCls">
+                {% csrf_token %}
+                <label for="" class="label">Username</label>
+                <input class="input" type="text" id="username" name="username" spellcheck="false" Required
+                    autocomplete="off">
+
+
+                <label for="" class="label">Password</label>
+                <input class="input" type="password" id="pass1" name="pass1" Required>
+
+
+                <button type="submit" class="button">Sign In</button>
+
+                <a href="/signup" class="createAnchor">Dont have an account? Sign Up</a>
+            </form>
+        </div>
+        <div>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+</body>
+
+</html>
