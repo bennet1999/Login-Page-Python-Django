@@ -65,7 +65,8 @@ def signin(request):
                 login(request,user)
                 request.session['username'] = username
                 messages.info(request, 'Logged in Successfully')
-                return render(request, 'dashboard.html')
+                currentuser = request.user
+                return render(request, 'dashboard.html', {'currentuser':currentuser})
             else:
                 messages.info(request, 'Invalid Credentials')
                 return redirect('signin')
@@ -82,4 +83,5 @@ def signout(request):
 
 @login_required
 def dashboard(request):
-        return render(request, 'dashboard.html')
+        currentuser = request.user
+        return render(request, 'dashboard.html',{'currentuser':currentuser})
